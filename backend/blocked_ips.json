@@ -1,0 +1,278 @@
+{
+  "45.33.12.1": {
+    "blocked_at": "2026-03-24T06:12:59.654503",
+    "reason": "Intrusion detected with confidence 0.99",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "91.77.23.45": {
+    "blocked_at": "2026-03-24T06:16:54.469559",
+    "reason": "Intrusion detected with confidence 0.99",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "104.6.148.213": {
+    "blocked_at": "2026-03-24T06:22:00.024783",
+    "reason": "Intrusion detected with confidence 0.90",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "185.199.108.153": {
+    "blocked_at": "2026-03-24T06:22:00.076777",
+    "reason": "Intrusion detected with confidence 0.90",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "1.1.1.1": {
+    "blocked_at": "2026-03-24T06:22:00.098790",
+    "reason": "Intrusion detected with confidence 0.80",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "23.45.67.89": {
+    "blocked_at": "2026-03-24T06:22:00.118776",
+    "reason": "Intrusion detected with confidence 0.85",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "91.198.174.192": {
+    "blocked_at": "2026-03-24T08:09:31.327609",
+    "reason": "Intrusion detected with confidence 0.99",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "142.250.190.14": {
+    "blocked_at": "2026-03-24T08:09:31.516569",
+    "reason": "Intrusion detected with confidence 0.85",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "45.204.201.24": {
+    "blocked_at": "2026-03-24T08:09:31.605572",
+    "reason": "Intrusion detected with confidence 0.80",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "172.201.140.167": {
+    "blocked_at": "2026-03-24T08:09:31.655773",
+    "reason": "Intrusion detected with confidence 0.85",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "52.84.150.10": {
+    "blocked_at": "2026-03-24T08:09:31.795774",
+    "reason": "Intrusion detected with confidence 0.80",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "198.51.100.27": {
+    "blocked_at": "2026-03-24T08:09:31.915775",
+    "reason": "Intrusion detected with confidence 0.95",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "103.193.3.103": {
+    "blocked_at": "2026-03-24T08:09:31.996854",
+    "reason": "Intrusion detected with confidence 0.95",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "172.159.101.50": {
+    "blocked_at": "2026-03-25T08:23:19.598983",
+    "reason": "Intrusion detected with confidence 0.85",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "203.116.248.70": {
+    "blocked_at": "2026-03-25T08:23:19.689558",
+    "reason": "Intrusion detected with confidence 0.95",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "93.184.216.34": {
+    "blocked_at": "2026-03-25T08:23:19.734243",
+    "reason": "Intrusion detected with confidence 0.85",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "151.101.1.69": {
+    "blocked_at": "2026-03-25T08:23:19.772637",
+    "reason": "Intrusion detected with confidence 0.85",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "185.194.160.103": {
+    "blocked_at": "2026-03-25T08:28:20.438372",
+    "reason": "Intrusion detected with confidence 0.85",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "172.20.21.83": {
+    "blocked_at": "2026-03-25T08:28:20.541562",
+    "reason": "Intrusion detected with confidence 0.80",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "13.35.37.89": {
+    "blocked_at": "2026-03-25T08:28:20.612263",
+    "reason": "Intrusion detected with confidence 0.80",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "198.226.207.14": {
+    "blocked_at": "2026-03-25T08:28:20.697361",
+    "reason": "Intrusion detected with confidence 0.85",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "8.8.8.8": {
+    "blocked_at": "2026-03-25T08:28:20.820645",
+    "reason": "Intrusion detected with confidence 0.95",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "103.5.11.9": {
+    "blocked_at": "2026-03-25T08:28:20.965342",
+    "reason": "Intrusion detected with confidence 0.99",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "172.93.24.150": {
+    "blocked_at": "2026-03-25T08:40:21.012643",
+    "reason": "Intrusion detected with confidence 0.85",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "203.0.113.55": {
+    "blocked_at": "2026-03-25T08:40:21.110118",
+    "reason": "Intrusion detected with confidence 0.95",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "198.186.152.145": {
+    "blocked_at": "2026-03-25T08:40:21.196100",
+    "reason": "Intrusion detected with confidence 0.95",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "103.161.227.152": {
+    "blocked_at": "2026-03-25T08:40:21.368868",
+    "reason": "Intrusion detected with confidence 0.85",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "129.123.166.158": {
+    "blocked_at": "2026-03-25T08:40:55.812658",
+    "reason": "Intrusion detected with confidence 0.80",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "198.32.53.94": {
+    "blocked_at": "2026-03-25T08:40:57.253043",
+    "reason": "Intrusion detected with confidence 0.80",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "103.108.22.136": {
+    "blocked_at": "2026-03-25T08:49:08.184420",
+    "reason": "Intrusion detected with confidence 0.80",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "63.214.69.198": {
+    "blocked_at": "2026-03-25T08:49:08.613413",
+    "reason": "Intrusion detected with confidence 0.95",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "203.159.30.225": {
+    "blocked_at": "2026-03-25T08:49:08.933112",
+    "reason": "Intrusion detected with confidence 0.80",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "87.43.254.225": {
+    "blocked_at": "2026-03-26T05:16:29.636262",
+    "reason": "Intrusion detected with confidence 0.95",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "151.47.52.189": {
+    "blocked_at": "2026-03-26T05:16:31.135963",
+    "reason": "Intrusion detected with confidence 0.95",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "45.5.231.148": {
+    "blocked_at": "2026-03-26T05:16:31.542140",
+    "reason": "Intrusion detected with confidence 0.85",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "103.182.134.16": {
+    "blocked_at": "2026-03-26T05:17:01.983433",
+    "reason": "Intrusion detected with confidence 0.85",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "104.16.132.229": {
+    "blocked_at": "2026-03-26T05:17:06.319617",
+    "reason": "Intrusion detected with confidence 0.80",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "45.161.31.117": {
+    "blocked_at": "2026-03-26T05:17:09.652787",
+    "reason": "Intrusion detected with confidence 0.95",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "203.10.137.118": {
+    "blocked_at": "2026-03-26T05:17:12.315381",
+    "reason": "Intrusion detected with confidence 0.90",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "151.43.40.214": {
+    "blocked_at": "2026-03-26T07:03:24.599208",
+    "reason": "Intrusion detected with confidence 0.95",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "23.204.124.186": {
+    "blocked_at": "2026-03-26T07:03:24.859209",
+    "reason": "Intrusion detected with confidence 0.80",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "198.238.30.133": {
+    "blocked_at": "2026-03-26T07:03:25.138706",
+    "reason": "Intrusion detected with confidence 0.99",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "209.27.72.230": {
+    "blocked_at": "2026-03-26T07:23:34.773077",
+    "reason": "Intrusion detected with confidence 0.90",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "129.131.196.51": {
+    "blocked_at": "2026-03-26T07:23:36.322293",
+    "reason": "Intrusion detected with confidence 0.80",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "31.220.157.31": {
+    "blocked_at": "2026-03-26T08:44:31.621617",
+    "reason": "Intrusion detected with confidence 0.90",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "52.192.51.168": {
+    "blocked_at": "2026-03-26T08:44:31.923548",
+    "reason": "Intrusion detected with confidence 0.85",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  }
+}

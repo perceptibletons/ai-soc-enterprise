@@ -1,0 +1,17 @@
+# Frontend Dependencies
+streamlit
+pandas
+numpy
+plotly
+pillow
+requests
+
+# Backend Dependencies
+fastapi
+uvicorn
+scikit-learn
+joblib
+
+# Optional Geolocation Mapping Tools
+streamlit-folium
+folium
