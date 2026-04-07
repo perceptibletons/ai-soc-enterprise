@@ -43,33 +43,109 @@ except Exception:
 def styled_chart_layout(fig, height=340):
     fig.update_layout(
         paper_bgcolor="rgba(0,0,0,0)",
-        plot_bgcolor="rgba(6,6,14,0.8)",
-        font=dict(family="Inter, sans-serif", color="#a09ac0", size=11),
-        title_font=dict(family="Inter, sans-serif", color="#f1f0ff", size=13),
+        plot_bgcolor="rgba(248,249,253,1)",
+        font=dict(family="Inter, sans-serif", color="#5a6074", size=11),
+        title_font=dict(family="Inter, sans-serif", color="#1a1d2e", size=13),
         margin=dict(l=16, r=16, t=36, b=16),
-        legend=dict(bgcolor="rgba(10,10,20,0.8)", bordercolor="rgba(139,92,246,0.2)", borderwidth=1),
+        legend=dict(bgcolor="rgba(255,255,255,0.9)", bordercolor="rgba(0,0,0,0.08)", borderwidth=1),
         height=height,
     )
-    fig.update_xaxes(gridcolor="rgba(139,92,246,0.08)", linecolor="rgba(139,92,246,0.15)", tickcolor="rgba(139,92,246,0.15)")
-    fig.update_yaxes(gridcolor="rgba(139,92,246,0.08)", linecolor="rgba(139,92,246,0.15)", tickcolor="rgba(139,92,246,0.15)")
+    fig.update_xaxes(gridcolor="rgba(0,0,0,0.05)", linecolor="rgba(0,0,0,0.08)", tickcolor="rgba(0,0,0,0.08)")
+    fig.update_yaxes(gridcolor="rgba(0,0,0,0.05)", linecolor="rgba(0,0,0,0.08)", tickcolor="rgba(0,0,0,0.08)")
     return fig
 
 # ── Sidebar ──
 with st.sidebar:
     st.markdown("""
-    <div style="padding:20px 0 16px 0;">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
-        <div style="width:42px;height:42px;background:linear-gradient(135deg,#7c3aed,#06b6d4);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 0 15px rgba(124,58,237,0.4);">🛡️</div>
+    <style>
+      @keyframes core-pulse {
+        0%, 100% { transform: scale(0.8); opacity: 0.7; }
+        50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 10px rgba(255,255,255,1); }
+      }
+      @keyframes ring-spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      @keyframes scanline {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(100%); }
+      }
+      .logo-container {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #2b44d2 0%, #4361ee 100%);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 16px rgba(67,97,238,0.3), inset 0 2px 4px rgba(255,255,255,0.2);
+        flex-shrink: 0;
+        overflow: hidden;
+      }
+      .logo-grid {
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background-image: 
+          linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+        background-size: 6px 6px;
+        animation: ring-spin 40s linear infinite;
+        opacity: 0.8;
+      }
+      .logo-scan {
+        position: absolute;
+        width: 100%;
+        height: 10px;
+        background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.4), transparent);
+        animation: scanline 2.5s linear infinite;
+      }
+      .logo-ring-1 {
+        position: absolute;
+        width: 28px;
+        height: 28px;
+        border: 2px solid transparent;
+        border-top-color: rgba(255,255,255,0.9);
+        border-bottom-color: rgba(255,255,255,0.9);
+        border-radius: 50%;
+        animation: ring-spin 4s linear infinite;
+      }
+      .logo-ring-2 {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        border: 1px dashed rgba(255,255,255,0.5);
+        border-radius: 50%;
+        animation: ring-spin 8s linear infinite reverse;
+      }
+      .logo-core {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: #ffffff;
+        border-radius: 50%;
+        animation: core-pulse 1.5s ease-in-out infinite;
+      }
+    </style>
+    <div style="padding:22px 16px 18px 16px;border-bottom:1px solid rgba(0,0,0,0.07);margin-bottom:8px;">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div class="logo-container">
+          <div class="logo-grid"></div>
+          <div class="logo-scan"></div>
+          <div class="logo-ring-2"></div>
+          <div class="logo-ring-1"></div>
+          <div class="logo-core"></div>
+        </div>
         <div>
-          <div style="font-size:1.5rem;font-weight:900;background:linear-gradient(90deg, #ffffff, #c4b5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-0.02em;text-shadow:0px 0px 20px rgba(167,139,250,0.4);">AI-SOC</div>
-          <div style="font-size:0.75rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:#22d3ee;margin-top:2px;text-shadow:0px 0px 10px rgba(34,211,238,0.4);">Enterprise Platform</div>
+          <div style="font-size:1.55rem;font-weight:900;color:#1a1d2e;letter-spacing:-0.03em;line-height:1.1;">AI-SOC</div>
+          <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#858ca1;margin-top:2px;">Enterprise Platform</div>
         </div>
       </div>
-      <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.4),transparent);margin:12px 0;"></div>
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("<div style='font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#6b6490;margin-bottom:8px;'>Navigation</div>", unsafe_allow_html=True)
+    st.markdown("<div style='font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#9ea5c0;padding:12px 16px 4px 16px;'>Main Tools</div>", unsafe_allow_html=True)
     page = st.radio(
         "Navigation",
         ["Dashboard Overview", "Phishing Detection", "Ransomware Detection",
@@ -78,21 +154,21 @@ with st.sidebar:
     )
 
     st.markdown("""
-    <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.3),transparent);margin:20px 0 14px 0;"></div>
-    <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#6b6490;margin-bottom:10px;">System Status</div>
+    <div style="height:1px;background:rgba(0,0,0,0.07);margin:14px 0 10px 0;"></div>
+    <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#9ea5c0;padding:0 16px 6px 16px;">System Status</div>
     """, unsafe_allow_html=True)
 
     for label in ["IDS Engine Active", "ML Model Running", "Sensors Connected"]:
         st.markdown(f"""
-        <div style="display:flex;align-items:center;gap:8px;padding:6px 0;">
-          <div style="width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px rgba(34,197,94,0.5);animation:blink 2s ease-in-out infinite;flex-shrink:0;"></div>
-          <span style="font-size:0.79rem;font-weight:500;color:#a09ac0;">{label}</span>
+        <div style="display:flex;align-items:center;gap:8px;padding:5px 16px;">
+          <div style="width:6px;height:6px;border-radius:50%;background:#38a169;flex-shrink:0;"></div>
+          <span style="font-size:0.78rem;font-weight:500;color:#5a6074;">{label}</span>
         </div>
         """, unsafe_allow_html=True)
 
     st.markdown("""
-    <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.3),transparent);margin:16px 0 12px 0;"></div>
-    <div style="font-size:0.65rem;color:#4a4470;text-transform:uppercase;letter-spacing:0.08em;">AI-SOC MVP · v2.0</div>
+    <div style="height:1px;background:rgba(0,0,0,0.07);margin:14px 0 10px 0;"></div>
+    <div style="font-size:0.63rem;color:#9ea5c0;padding:0 16px;letter-spacing:0.06em;">AI-SOC MVP · v2.0</div>
     """, unsafe_allow_html=True)
 
 # ── Compute metrics ──
@@ -111,11 +187,11 @@ safe_cnt  = max(0, 1000 - total_threats)
 
 # ── Page header + KPI bar ──
 st.markdown("""
-<div style="display:flex;align-items:baseline;gap:14px;margin:0 0 4px 0;">
-  <h1 style="font-size:1.7rem;font-weight:900;letter-spacing:-0.03em;margin:0;color:#f1f0ff;">Threat Monitoring</h1>
-  <span style="font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#7c3aed;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.25);padding:3px 10px;border-radius:99px;">LIVE</span>
+<div style="display:flex;align-items:center;gap:12px;margin:0 0 4px 0;">
+  <h1 style="font-size:1.55rem;font-weight:800;letter-spacing:-0.02em;margin:0;color:#1a1d2e;">Threat Monitoring</h1>
+  <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#4361ee;background:rgba(67,97,238,0.08);border:1px solid rgba(67,97,238,0.2);padding:3px 10px;border-radius:99px;">LIVE</span>
 </div>
-<div style="font-size:0.8rem;color:#6b6490;margin-bottom:20px;">Real-time security intelligence dashboard</div>
+<div style="font-size:0.78rem;color:#9ea5c0;margin-bottom:18px;">Real-time security intelligence dashboard</div>
 """, unsafe_allow_html=True)
 
 c1, c2, c3, c4 = st.columns(4)
@@ -124,7 +200,7 @@ c2.markdown(metric_card("High Severity", high_cnt, "card card-high"), unsafe_all
 c3.markdown(metric_card("Medium Severity", med_cnt, "card card-med"), unsafe_allow_html=True)
 c4.markdown(metric_card("Safe Traffic", safe_cnt, "card card-safe"), unsafe_allow_html=True)
 
-st.markdown("<div style='height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.3),transparent);margin:24px 0;'></div>", unsafe_allow_html=True)
+st.markdown("<div style='height:1px;background:rgba(0,0,0,0.07);margin:22px 0;'></div>", unsafe_allow_html=True)
 
 # ═══════════════════════════════════════════════════════════════
 # DASHBOARD OVERVIEW
@@ -138,42 +214,42 @@ if page == "Dashboard Overview":
         section_header("Threat Level", "⚠️")
         gauge_val = compute_threat_score(logs_df_full)
         g_theme = "danger" if gauge_val >= 65 else ("warning" if gauge_val >= 35 else "safe")
-        g_col = "#ef4444" if g_theme == "danger" else ("#f97316" if g_theme == "warning" else "#22c55e")
+        g_col = "#e53e3e" if g_theme == "danger" else ("#dd6b20" if g_theme == "warning" else "#38a169")
         st.markdown(f"""
         <div class="cyber-gauge-wrap">
           <div class="cyber-gauge-ring {g_theme}"></div>
           <div class="cyber-gauge-center">
-            <div class="cyber-gauge-value" style="color:{g_col};text-shadow:0 0 15px {g_col}66;">{gauge_val}</div>
+            <div class="cyber-gauge-value" style="color:{g_col};">{gauge_val}</div>
             <div class="cyber-gauge-label">Threat Score</div>
           </div>
         </div>
         """.replace("{{g_theme}}", g_theme).replace("{{g_col}}", g_col).replace("{{gauge_val}}", str(gauge_val)), unsafe_allow_html=True)
         
-        st.markdown("<div style='height:28px;'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='height:20px;'></div>", unsafe_allow_html=True)
 
         section_header("Security Posture", "🛡️")
         posture = compute_security_posture(logs_df_full, window_hours=24)
         posture_val = posture.get('score', 100)
         posture_cat = posture.get('category', 'Unknown')
-        cat_color = {"Strong": "#22c55e", "Moderate": "#f97316", "Weak": "#ef4444", "Critical": "#dc2626"}.get(posture_cat, "#a09ac0")
+        cat_color = {"Strong": "#38a169", "Moderate": "#dd6b20", "Weak": "#e53e3e", "Critical": "#c53030"}.get(posture_cat, "#5a6074")
         
         p_theme = "danger" if posture_val < 40 else ("warning" if posture_val < 70 else "safe")
         st.markdown(f"""
         <div class="cyber-gauge-wrap">
           <div class="cyber-gauge-ring {p_theme}"></div>
           <div class="cyber-gauge-center">
-            <div class="cyber-gauge-value" style="color:{cat_color};text-shadow:0 0 15px {cat_color}66;">{posture_val}</div>
+            <div class="cyber-gauge-value" style="color:{cat_color};">{posture_val}</div>
             <div class="cyber-gauge-label">Posture Index</div>
           </div>
         </div>
         """.replace("{{p_theme}}", p_theme).replace("{{cat_color}}", cat_color).replace("{{posture_val}}", str(posture_val)), unsafe_allow_html=True)
         
         st.markdown(f"""
-        <div style="text-align:center;margin-top:12px;padding:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(139,92,246,0.15);border-radius:10px;">
-          <span style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#6b6490;">Status</span>
-          <span style="font-weight:900;font-size:0.95rem;color:{cat_color};margin:0 8px;">●  {posture_cat}</span>
+        <div style="text-align:center;margin-top:10px;padding:10px 12px;background:#f4f5f9;border:1px solid rgba(0,0,0,0.07);border-radius:10px;">
+          <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#9ea5c0;">Status</span>
+          <span style="font-weight:700;font-size:0.9rem;color:{cat_color};margin:0 8px;">● {posture_cat}</span>
           <br>
-          <span style="font-size:0.7rem;color:#8ecfd8;">Last 24h · {posture.get('total_attacks',0)} events</span>
+          <span style="font-size:0.68rem;color:#9ea5c0;">Last 24h · {posture.get('total_attacks',0)} events</span>
         </div>""", unsafe_allow_html=True)
 
     with right:
@@ -200,23 +276,23 @@ if page == "Dashboard Overview":
                 <div class="alert-item" style="animation-delay:{i*0.04}s">
                   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
                     <div style="display:flex;align-items:center;gap:8px;">
-                      <span style="font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:#7c8ba0;">{ts_full}</span>
-                      <span style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:#7c6fa0;font-weight:600;">{ts}</span>
-                      <span style="font-size:0.78rem;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:#a78bfa;">{attack}</span>
+                      <span style="font-family:'JetBrains Mono',monospace;font-size:0.67rem;color:#9ea5c0;">{ts_full}</span>
+                      <span style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:#5a6074;font-weight:600;">{ts}</span>
+                      <span style="font-size:0.76rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#4361ee;">{attack}</span>
                     </div>
                     <div style="display:flex;align-items:center;gap:6px;">{badge}</div>
                   </div>
-                  <div style="font-size:0.73rem;color:#6b6490;">
-                    <span style="color:#a09ac0;">src</span> <span style="font-family:'JetBrains Mono',monospace;color:#06b6d4;">{src}</span>
-                    &nbsp;·&nbsp; <span style="color:#a09ac0;">{lab}</span>
-                    &nbsp;·&nbsp; <span style="color:#6b6490;">conf {conf:.2f}</span>
+                  <div style="font-size:0.72rem;color:#9ea5c0;">
+                    <span style="color:#5a6074;">src</span> <span style="font-family:'JetBrains Mono',monospace;color:#4361ee;">{src}</span>
+                    &nbsp;·&nbsp; <span style="color:#5a6074;">{lab}</span>
+                    &nbsp;·&nbsp; <span style="color:#9ea5c0;">conf {conf:.2f}</span>
                   </div>
-                  <div style="font-size:0.7rem;color:#8ecfd8;margin-top:2px;font-family:'JetBrains Mono',monospace;">{details}</div>
+                  <div style="font-size:0.69rem;color:#5a6074;margin-top:2px;font-family:'JetBrains Mono',monospace;">{details}</div>
                 </div>"""
             html += "</div>"
             st.markdown(html, unsafe_allow_html=True)
 
-    st.markdown("<div style='height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.25),transparent);margin:24px 0;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height:1px;background:rgba(0,0,0,0.07);margin:22px 0;'></div>", unsafe_allow_html=True)
 
     # Charts row
     a, b = st.columns([1.6, 1.4])
@@ -224,21 +300,21 @@ if page == "Dashboard Overview":
         section_header("Threat Distribution", "📊")
         if logs_df.empty:
             df_dist = pd.DataFrame({"attack": ["Phishing","Intrusion","Ransomware","Insider"], "count": [0,0,0,0]})
-            fig = px.pie(df_dist, names="attack", values="count", hole=0.7)
+            fig = px.pie(df_dist, names="attack", values="count", hole=0.65)
         else:
             df_dist = logs_df.groupby("attack_type").size().reset_index(name="count")
-            fig = px.pie(df_dist, names="attack_type", values="count", hole=0.7,
-                         color_discrete_sequence=["#06b6d4", "#8b5cf6", "#ec4899", "#f97316", "#22c55e", "#eab308"])
+            fig = px.pie(df_dist, names="attack_type", values="count", hole=0.65,
+                         color_discrete_sequence=["#4361ee", "#6c8cff", "#a5b8fb", "#dd6b20", "#38a169", "#e53e3e"])
         
         fig.update_traces(
             textinfo="percent", 
-            textfont=dict(color="#f1f0ff", size=12, family="Inter"),
+            textfont=dict(color="#ffffff", size=12, family="Inter"),
             hoverinfo="label+percent+value",
-            marker=dict(line=dict(color='#0d0d18', width=3)),
+            marker=dict(line=dict(color='#ffffff', width=2)),
             pull=[0.02] * len(df_dist),
             rotation=45
         )
-        fig.add_annotation(text="ATTACKS", x=0.5, y=0.5, font=dict(size=12, color="#6b6490", family="Inter", weight="bold"), showarrow=False)
+        fig.add_annotation(text="ATTACKS", x=0.5, y=0.5, font=dict(size=11, color="#9ea5c0", family="Inter"), showarrow=False)
         fig = styled_chart_layout(fig, 320)
         st.plotly_chart(fig, use_container_width=True)
 
@@ -250,27 +326,22 @@ if page == "Dashboard Overview":
             trend_df = pd.DataFrame({"time_bucket": hours, "count": [0]*24})
         
         fig2 = go.Figure()
-        # Glow effect
-        fig2.add_trace(go.Scatter(
-            x=trend_df['time_bucket'], y=trend_df['count'],
-            mode='lines', line=dict(color='rgba(124,58,237,0.3)', width=8, shape='spline'), showlegend=False, hoverinfo='skip'
-        ))
         # Main line and fill
         fig2.add_trace(go.Scatter(
             x=trend_df['time_bucket'], y=trend_df['count'],
-            mode='lines+markers', line=dict(color='#a78bfa', width=3, shape='spline'),
-            marker=dict(size=6, color='#0d0d18', line=dict(width=2, color='#a78bfa')),
-            fill='tozeroy', fillcolor='rgba(124,58,237,0.15)', name='Volume'
+            mode='lines+markers', line=dict(color='#4361ee', width=2.5, shape='spline'),
+            marker=dict(size=5, color='#ffffff', line=dict(width=2, color='#4361ee')),
+            fill='tozeroy', fillcolor='rgba(67,97,238,0.1)', name='Volume'
         ))
         fig2 = styled_chart_layout(fig2, 320)
         st.plotly_chart(fig2, use_container_width=True)
 
-    st.markdown("<div style='height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.25),transparent);margin:24px 0;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height:1px;background:rgba(0,0,0,0.07);margin:22px 0;'></div>", unsafe_allow_html=True)
 
     # Global Attack Map
     render_attack_map(logs_df_full.head(400))
 
-    st.markdown("<div style='height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.25),transparent);margin:24px 0;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height:1px;background:rgba(0,0,0,0.07);margin:22px 0;'></div>", unsafe_allow_html=True)
 
     # Critical Incident Timeline
     section_header("Critical Incident Timeline", "🚨")
@@ -298,7 +369,7 @@ if page == "Dashboard Overview":
         timeline_html += "</div>"
         st.markdown(timeline_html, unsafe_allow_html=True)
 
-    st.markdown("<div style='height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.25),transparent);margin:24px 0;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height:1px;background:rgba(0,0,0,0.07);margin:22px 0;'></div>", unsafe_allow_html=True)
 
     # Bottom row
     left_col, right_col = st.columns([1.3, 2])
@@ -319,18 +390,17 @@ if page == "Dashboard Overview":
         metrics = compute_metrics_from_labels(logs_df)
         if metrics and "confusion_matrix" in metrics:
             z = np.array(metrics["confusion_matrix"])
-            st.markdown(f"<div style='font-size:0.75rem;color:#a09ac0;margin:-5px 0 10px 0;'>Based on {metrics['labeled_count']} analyst-reviewed incidents</div>", unsafe_allow_html=True)
+            st.markdown(f"<div style='font-size:0.73rem;color:#9ea5c0;margin:-5px 0 10px 0;'>Based on {metrics['labeled_count']} analyst-reviewed incidents</div>", unsafe_allow_html=True)
         else:
             z = np.array([[88, 12], [5, 95]])
-            st.markdown("<div style='font-size:0.75rem;color:#a09ac0;margin:-5px 0 10px 0;'>Simulated metrics (Label incidents in logs to see real data)</div>", unsafe_allow_html=True)
+            st.markdown("<div style='font-size:0.73rem;color:#9ea5c0;margin:-5px 0 10px 0;'>Simulated metrics (Label incidents in logs to see real data)</div>", unsafe_allow_html=True)
             
         figc = px.imshow(z, text_auto=".0f", 
                          labels=dict(x="AI Prediction", y="Actual Label", color="Count"),
                          x=["Safe", "Threat"], y=["Safe", "Threat"],
-                         color_continuous_scale=[[0,"rgba(6,182,212,0.15)"], [1,"rgba(6,182,212,0.95)"]])
+                         color_continuous_scale=[[0,"rgba(67,97,238,0.1)"], [1,"rgba(67,97,238,0.95)"]])
         figc.update_traces(textfont=dict(color="#ffffff", size=18, family="Inter"))
         figc = styled_chart_layout(figc, 260)
-        # Increase left margin so labels aren't cut off
         figc.update_layout(margin=dict(l=60, r=20, t=30, b=50))
         st.plotly_chart(figc, use_container_width=True)
 
@@ -338,8 +408,9 @@ if page == "Dashboard Overview":
 # PHISHING DETECTION — LIVE
 # ═══════════════════════════════════════════════════════════════
 elif page == "Phishing Detection":
-    section_header("Live Phishing Detection", "🎣")
-    st.markdown("<div style='color:#6b6490;font-size:0.82rem;margin-bottom:20px;'>Auto-generates realistic phishing & benign email samples, feeds into detector in real-time, and ranks by severity.</div>", unsafe_allow_html=True)
+    ICON_PHISHING = "<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' style='margin-right:4px;vertical-align:-3px;color:#4361ee;'><path d='M22 10.5V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h12.5'/><path d='m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7'/><path d='M20 14v4'/><path d='M20 22v.01'/></svg>"
+    section_header("Live Phishing Detection", ICON_PHISHING)
+    st.markdown("<div style='color:#9ea5c0;font-size:0.8rem;margin-bottom:18px;'>Auto-generates realistic phishing &amp; benign email samples, feeds into detector in real-time, and ranks by severity.</div>", unsafe_allow_html=True)
 
     backend_url = st.text_input("Backend URL", value=BACKEND_URL_DEFAULT, key="phishing_backend")
     c1, c2 = st.columns([1, 1])
@@ -373,8 +444,8 @@ elif page == "Phishing Detection":
         k2.markdown(metric_card("HIGH Severity", high, "card card-high"), unsafe_allow_html=True)
         k3.markdown(metric_card("MEDIUM Severity", med, "card card-med"), unsafe_allow_html=True)
         k4.markdown(metric_card("LOW / Benign", low, "card card-safe"), unsafe_allow_html=True)
-        st.markdown("<div style='height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.3),transparent);margin:20px 0;'></div>", unsafe_allow_html=True)
-        st.markdown("<div style='font-size:0.78rem;font-weight:700;color:#a78bfa;margin-bottom:10px;letter-spacing:0.06em;text-transform:uppercase;'>📡 Live Detection Feed</div>", unsafe_allow_html=True)
+        st.markdown("<div style='height:1px;background:rgba(0,0,0,0.07);margin:18px 0;'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='font-size:0.72rem;font-weight:700;color:#4361ee;margin-bottom:10px;letter-spacing:0.08em;text-transform:uppercase;'>📡 Live Detection Feed</div>", unsafe_allow_html=True)
         feed_html = "<div>"
         for i, r in enumerate(results):
             sev = r['severity']
@@ -396,7 +467,7 @@ elif page == "Phishing Detection":
         feed_html += "</div>"
         st.markdown(feed_html, unsafe_allow_html=True)
         
-        st.markdown("<div style='height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.25),transparent);margin:20px 0;'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='height:1px;background:rgba(0,0,0,0.07);margin:18px 0;'></div>", unsafe_allow_html=True)
         
         # Selectbox to pick which incident to investigate
         section_header("AI Threat Investigation", "🔍")
@@ -411,8 +482,9 @@ elif page == "Phishing Detection":
 # RANSOMWARE DETECTION — LIVE
 # ═══════════════════════════════════════════════════════════════
 elif page == "Ransomware Detection":
-    section_header("Live Ransomware Detection", "💀")
-    st.markdown("<div style='color:#6b6490;font-size:0.82rem;margin-bottom:20px;'>Auto-generates ransomware & benign file samples, feeds into detector in real-time, and ranks by severity.</div>", unsafe_allow_html=True)
+    ICON_RANSOMWARE = "<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' style='margin-right:4px;vertical-align:-3px;color:#4361ee;'><rect width='18' height='11' x='3' y='11' rx='2' ry='2'/><path d='M7 11V7a5 5 0 0 1 10 0v4'/></svg>"
+    section_header("Live Ransomware Detection", ICON_RANSOMWARE)
+    st.markdown("<div style='color:#9ea5c0;font-size:0.8rem;margin-bottom:18px;'>Auto-generates ransomware &amp; benign file samples, feeds into detector in real-time, and ranks by severity.</div>", unsafe_allow_html=True)
 
     backend_url = st.text_input("Backend URL", value=BACKEND_URL_DEFAULT, key="rw_backend")
     c1, c2 = st.columns([1, 1])
@@ -441,8 +513,8 @@ elif page == "Ransomware Detection":
         k2.markdown(metric_card("HIGH Severity", high, "card card-high"), unsafe_allow_html=True)
         k3.markdown(metric_card("MEDIUM Severity", med, "card card-med"), unsafe_allow_html=True)
         k4.markdown(metric_card("LOW / Benign", low, "card card-safe"), unsafe_allow_html=True)
-        st.markdown("<div style='height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.3),transparent);margin:20px 0;'></div>", unsafe_allow_html=True)
-        st.markdown("<div style='font-size:0.78rem;font-weight:700;color:#a78bfa;margin-bottom:10px;letter-spacing:0.06em;text-transform:uppercase;'>📡 Live Detection Feed</div>", unsafe_allow_html=True)
+        st.markdown("<div style='height:1px;background:rgba(0,0,0,0.07);margin:18px 0;'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='font-size:0.72rem;font-weight:700;color:#4361ee;margin-bottom:10px;letter-spacing:0.08em;text-transform:uppercase;'>📡 Live Detection Feed</div>", unsafe_allow_html=True)
         feed_html = "<div>"
         for i, r in enumerate(results):
             sev = r['severity']
@@ -463,7 +535,7 @@ elif page == "Ransomware Detection":
         feed_html += "</div>"
         st.markdown(feed_html, unsafe_allow_html=True)
         
-        st.markdown("<div style='height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.25),transparent);margin:20px 0;'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='height:1px;background:rgba(0,0,0,0.07);margin:18px 0;'></div>", unsafe_allow_html=True)
         
         section_header("AI Threat Investigation", "🔍")
         rw_labels = [f"#{i+1} [{r['severity']}] {r['prediction']} — {r['file_name']} (conf {r['confidence']:.0%})" for i, r in enumerate(results)]
@@ -477,8 +549,9 @@ elif page == "Ransomware Detection":
 # INTRUSION DETECTION — LIVE
 # ═══════════════════════════════════════════════════════════════
 elif page == "Intrusion Detection":
-    section_header("Live Intrusion Detection", "🔒")
-    st.markdown("<div style='color:#6b6490;font-size:0.82rem;margin-bottom:20px;'>Auto-generates network flow samples, runs detection in real-time, and auto-blocks malicious IPs.</div>", unsafe_allow_html=True)
+    ICON_INTRUSION = "<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' style='margin-right:4px;vertical-align:-3px;color:#4361ee;'><path d='M22 12h-4l-3 9L9 3l-3 9H2'/></svg>"
+    section_header("Live Intrusion Detection", ICON_INTRUSION)
+    st.markdown("<div style='color:#9ea5c0;font-size:0.8rem;margin-bottom:18px;'>Auto-generates network flow samples, runs detection in real-time, and auto-blocks malicious IPs.</div>", unsafe_allow_html=True)
 
     backend_url = st.text_input("Backend URL", value=BACKEND_URL_DEFAULT, key="int_backend")
     c1, c2 = st.columns([1, 1])
@@ -510,8 +583,8 @@ elif page == "Intrusion Detection":
         k2.markdown(metric_card("HIGH Severity", high, "card card-high"), unsafe_allow_html=True)
         k3.markdown(metric_card("MEDIUM Severity", med, "card card-med"), unsafe_allow_html=True)
         k4.markdown(metric_card("IPs Blocked", blocked_cnt, "card card-safe"), unsafe_allow_html=True)
-        st.markdown("<div style='height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.3),transparent);margin:20px 0;'></div>", unsafe_allow_html=True)
-        st.markdown("<div style='font-size:0.78rem;font-weight:700;color:#a78bfa;margin-bottom:10px;letter-spacing:0.06em;text-transform:uppercase;'>📡 Live Detection Feed</div>", unsafe_allow_html=True)
+        st.markdown("<div style='height:1px;background:rgba(0,0,0,0.07);margin:18px 0;'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='font-size:0.72rem;font-weight:700;color:#4361ee;margin-bottom:10px;letter-spacing:0.08em;text-transform:uppercase;'>📡 Live Detection Feed</div>", unsafe_allow_html=True)
         feed_html = "<div>"
         for i, r in enumerate(results):
             sev = r['severity']
@@ -537,13 +610,13 @@ elif page == "Intrusion Detection":
         try:
             blocked_registry = fetch_blocked_ips(backend_url)
             if blocked_registry:
-                st.markdown("<div style='height:1px;background:linear-gradient(90deg,transparent,rgba(239,68,68,0.25),transparent);margin:20px 0;'></div>", unsafe_allow_html=True)
-                st.markdown("<div style='font-size:0.78rem;font-weight:700;color:#ef4444;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.06em;'>🚫 Blocked IP Registry</div>", unsafe_allow_html=True)
+                st.markdown("<div style='height:1px;background:rgba(0,0,0,0.07);margin:18px 0;'></div>", unsafe_allow_html=True)
+                st.markdown("<div style='font-size:0.72rem;font-weight:700;color:#e53e3e;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.08em;'>🚫 Blocked IP Registry</div>", unsafe_allow_html=True)
                 st.dataframe(pd.DataFrame([{"ip": ip, **meta} for ip, meta in blocked_registry.items()]), use_container_width=True, height=200)
         except Exception:
             pass
         
-        st.markdown("<div style='height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.25),transparent);margin:20px 0;'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='height:1px;background:rgba(0,0,0,0.07);margin:18px 0;'></div>", unsafe_allow_html=True)
         
         section_header("AI Threat Investigation", "🔍")
         int_labels = [f"#{i+1} [{r['severity']}] {r['prediction']} — {r['source']}→{r.get('dst_ip','')} (conf {r['confidence']:.0%})" for i, r in enumerate(results)]
@@ -557,8 +630,9 @@ elif page == "Intrusion Detection":
 # INSIDER THREAT — LIVE
 # ═══════════════════════════════════════════════════════════════
 elif page == "Insider Threat Detection":
-    section_header("Live Insider Threat Detection", "👁️")
-    st.markdown("<div style='color:#6b6490;font-size:0.82rem;margin-bottom:20px;'>Auto-generates user behaviour logs (login time, file accesses, activity score) and detects insider threats in real-time.</div>", unsafe_allow_html=True)
+    ICON_INSIDER = "<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' style='margin-right:4px;vertical-align:-3px;color:#4361ee;'><path d='M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2'/><circle cx='9' cy='7' r='4'/><line x1='17' y1='8' x2='22' y2='13'/><line x1='22' y1='8' x2='17' y2='13'/></svg>"
+    section_header("Live Insider Threat Detection", ICON_INSIDER)
+    st.markdown("<div style='color:#9ea5c0;font-size:0.8rem;margin-bottom:18px;'>Auto-generates user behaviour logs (login time, file accesses, activity score) and detects insider threats in real-time.</div>", unsafe_allow_html=True)
 
     backend_url = st.text_input("Backend URL", value=BACKEND_URL_DEFAULT, key="ins_backend")
     c1, c2 = st.columns([1, 1])
@@ -589,8 +663,8 @@ elif page == "Insider Threat Detection":
         k2.markdown(metric_card("HIGH Severity", high, "card card-high"), unsafe_allow_html=True)
         k3.markdown(metric_card("MEDIUM Severity", med, "card card-med"), unsafe_allow_html=True)
         k4.markdown(metric_card("LOW / Normal", low, "card card-safe"), unsafe_allow_html=True)
-        st.markdown("<div style='height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.3),transparent);margin:20px 0;'></div>", unsafe_allow_html=True)
-        st.markdown("<div style='font-size:0.78rem;font-weight:700;color:#a78bfa;margin-bottom:10px;letter-spacing:0.06em;text-transform:uppercase;'>📡 Live Detection Feed</div>", unsafe_allow_html=True)
+        st.markdown("<div style='height:1px;background:rgba(0,0,0,0.07);margin:18px 0;'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='font-size:0.72rem;font-weight:700;color:#4361ee;margin-bottom:10px;letter-spacing:0.08em;text-transform:uppercase;'>📡 Live Detection Feed</div>", unsafe_allow_html=True)
         feed_html = "<div>"
         for i, r in enumerate(results):
             sev = r['severity']
@@ -612,7 +686,7 @@ elif page == "Insider Threat Detection":
         feed_html += "</div>"
         st.markdown(feed_html, unsafe_allow_html=True)
         
-        st.markdown("<div style='height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.25),transparent);margin:20px 0;'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='height:1px;background:rgba(0,0,0,0.07);margin:18px 0;'></div>", unsafe_allow_html=True)
         
         section_header("AI Threat Investigation", "🔍")
         ins_labels = [f"#{i+1} [{r['severity']}] {r['prediction']} — {r['source']} login:{r.get('login_hour','?')}h (conf {r['confidence']:.0%})" for i, r in enumerate(results)]
@@ -627,7 +701,7 @@ elif page == "Insider Threat Detection":
 # ═══════════════════════════════════════════════════════════════
 elif page == "Incident Logs":
     section_header("Incident Logs", "📋")
-    st.markdown("<div style='color:#6b6490;font-size:0.82rem;margin-bottom:20px;'>Review incidents and mark as True Positive / False Positive for model evaluation.</div>", unsafe_allow_html=True)
+    st.markdown("<div style='color:#9ea5c0;font-size:0.8rem;margin-bottom:18px;'>Review incidents and mark as True Positive / False Positive for model evaluation.</div>", unsafe_allow_html=True)
 
     logs_path = os.path.join("logs", "attack_logs.csv")
     if not os.path.exists(logs_path):
@@ -738,7 +812,7 @@ elif page == "Incident Logs":
                     )
                 st.markdown(f"<div style='font-size:0.75rem;color:#6b6490;text-align:right;'>{len(df_out)} records ready for export</div>", unsafe_allow_html=True)
             
-            st.markdown("<div style='height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.25),transparent);margin:16px 0;'></div>", unsafe_allow_html=True)
+            st.markdown("<div style='height:1px;background:rgba(0,0,0,0.07);margin:16px 0;'></div>", unsafe_allow_html=True)
 
             # Filtering Section
             c1, c2 = st.columns(2)
@@ -795,8 +869,8 @@ elif page == "Incident Logs":
                 hide_index=True
             )
 
-            st.markdown("<div style='height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.25),transparent);margin:16px 0;'></div>", unsafe_allow_html=True)
-            st.markdown("<div style='font-size:0.85rem;font-weight:700;color:#a78bfa;margin-bottom:10px;'>Label an Incident</div>", unsafe_allow_html=True)
+            st.markdown("<div style='height:1px;background:rgba(0,0,0,0.07);margin:16px 0;'></div>", unsafe_allow_html=True)
+            st.markdown("<div style='font-size:0.82rem;font-weight:700;color:#4361ee;margin-bottom:10px;'>Label an Incident</div>", unsafe_allow_html=True)
 
             idx = st.number_input("File row index (from table above)", 
                                   min_value=0, 

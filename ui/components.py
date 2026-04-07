@@ -93,23 +93,23 @@ def render_ai_investigation(attack_label, source=None, details=None, severity=No
 
     html = f"""
     <div class="investigation-panel">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
         <div style="display:flex;align-items:center;gap:10px;">
-          <div style="width:4px;height:28px;background:linear-gradient(180deg,#7c3aed,#06b6d4);border-radius:2px;"></div>
+          <div style="width:3px;height:24px;background:#4361ee;border-radius:2px;"></div>
           <div>
             <div class="inv-label" style="margin-bottom:2px;">🔍 AI Threat Investigation — Selected Incident</div>
-            <div style="font-size:1.15rem;font-weight:900;color:#f1f0ff;letter-spacing:-0.02em;">{attack_label}</div>
+            <div style="font-size:1.05rem;font-weight:800;color:#1a1d2e;letter-spacing:-0.02em;">{attack_label}</div>
           </div>
         </div>
         <div>{sev_badge}</div>
       </div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
-        <div style="background:rgba(124,58,237,0.07);border:1px solid rgba(139,92,246,0.2);border-radius:12px;padding:14px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+        <div style="background:#f8f9fd;border:1px solid rgba(67,97,238,0.12);border-radius:10px;padding:14px;">
           <div class="inv-label">🤖 AI Evidence Analysis</div>
-          <div class="inv-value" style="line-height:1.65;">{dynamic_analysis}</div>
+          <div class="inv-value" style="line-height:1.6;">{dynamic_analysis}</div>
         </div>
-        <div style="background:rgba(6,182,212,0.05);border:1px solid rgba(6,182,212,0.2);border-radius:12px;padding:14px;">
+        <div style="background:#f8f9fd;border:1px solid rgba(67,97,238,0.12);border-radius:10px;padding:14px;">
           <div class="inv-label">⚡ Recommended Response</div>
           <div class="inv-value">{response_text}</div>
         </div>
@@ -138,21 +138,21 @@ def render_mitre_mapping(attack_label):
     tactic    = mapping.get("tactic", "N/A")
 
     html = f"""
-    <div class="mitre-panel" style="background:rgba(6,182,212,0.05);border:1px solid rgba(6,182,212,0.2);border-radius:16px;padding:20px 24px;margin:12px 0;display:flex;gap:24px;flex-wrap:wrap;animation:fadeInUp 0.45s ease;">
+    <div class="mitre-panel">
       <div style="margin-bottom:2px;">
-        <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#06b6d4;margin-bottom:6px;">⚡ MITRE ATT&amp;CK</div>
+        <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#4361ee;margin-bottom:6px;">⚡ MITRE ATT&amp;CK</div>
       </div>
-      <div class="mitre-chip" style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.25);border-radius:8px;padding:8px 16px;text-align:center;">
-        <span class="chip-label" style="font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#06b6d4;display:block;margin-bottom:3px;">Technique</span>
-        <span class="chip-value" style="font-size:0.88rem;font-weight:600;color:#f1f0ff;">{technique}</span>
+      <div class="mitre-chip">
+        <span class="chip-label">Technique</span>
+        <span class="chip-value">{technique}</span>
       </div>
-      <div class="mitre-chip" style="background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.25);border-radius:8px;padding:8px 24px;text-align:center;">
-        <span class="chip-label" style="font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#a78bfa;display:block;margin-bottom:3px;">MITRE ID</span>
-        <span class="chip-value" style="font-size:1rem;font-weight:900;color:#a78bfa;font-family:'JetBrains Mono',monospace;">{mitre_id}</span>
+      <div class="mitre-chip" style="border-color:rgba(67,97,238,0.2);">
+        <span class="chip-label">MITRE ID</span>
+        <span class="chip-value" style="font-family:'JetBrains Mono',monospace;color:#4361ee;">{mitre_id}</span>
       </div>
-      <div class="mitre-chip" style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.25);border-radius:8px;padding:8px 16px;text-align:center;">
-        <span class="chip-label" style="font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#06b6d4;display:block;margin-bottom:3px;">Tactic</span>
-        <span class="chip-value" style="font-size:0.88rem;font-weight:600;color:#f1f0ff;">{tactic}</span>
+      <div class="mitre-chip">
+        <span class="chip-label">Tactic</span>
+        <span class="chip-value">{tactic}</span>
       </div>
     </div>
     """
@@ -273,9 +273,9 @@ def render_attack_map(logs_df):
 # ── Helper: section header ──
 def section_header(title, icon=""):
     st.markdown(f"""
-    <div class="section-header" style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-      <div style="width:4px;height:20px;background:linear-gradient(180deg,#7c3aed,#06b6d4);border-radius:2px;flex-shrink:0;"></div>
-      <h2 style="font-size:0.95rem;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;color:#f1f0ff;margin:0;">{icon} {title}</h2>
+    <div class="section-header" style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+      <div style="width:3px;height:18px;background:#4361ee;border-radius:2px;flex-shrink:0;"></div>
+      <h2 style="font-size:0.82rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#1a1d2e;margin:0;">{icon} {title}</h2>
     </div>
     """, unsafe_allow_html=True)
 

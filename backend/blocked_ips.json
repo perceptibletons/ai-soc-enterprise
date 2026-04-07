@@ -298,5 +298,77 @@
     "reason": "Intrusion detected with confidence 0.90",
     "prediction": "Intrusion",
     "status": "blocked"
+  },
+  "63.158.233.207": {
+    "blocked_at": "2026-04-07T05:41:24.132262",
+    "reason": "Intrusion detected with confidence 0.85",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "23.201.50.193": {
+    "blocked_at": "2026-04-07T05:41:24.445947",
+    "reason": "Intrusion detected with confidence 0.85",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "52.48.9.98": {
+    "blocked_at": "2026-04-07T05:41:24.557915",
+    "reason": "Intrusion detected with confidence 0.85",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "185.97.229.123": {
+    "blocked_at": "2026-04-07T05:46:12.626580",
+    "reason": "Intrusion detected with confidence 0.80",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "31.140.165.184": {
+    "blocked_at": "2026-04-07T05:46:12.721051",
+    "reason": "Intrusion detected with confidence 0.95",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "87.158.17.95": {
+    "blocked_at": "2026-04-07T05:46:12.842942",
+    "reason": "Intrusion detected with confidence 0.85",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "63.22.45.108": {
+    "blocked_at": "2026-04-07T05:46:12.907815",
+    "reason": "Intrusion detected with confidence 0.90",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "23.117.132.195": {
+    "blocked_at": "2026-04-07T05:46:13.069091",
+    "reason": "Intrusion detected with confidence 0.95",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "103.254.204.228": {
+    "blocked_at": "2026-04-07T07:58:12.633554",
+    "reason": "Intrusion detected with confidence 0.85",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "63.44.179.117": {
+    "blocked_at": "2026-04-07T07:58:12.683259",
+    "reason": "Intrusion detected with confidence 0.95",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "87.164.248.158": {
+    "blocked_at": "2026-04-07T08:02:58.125968",
+    "reason": "Intrusion detected with confidence 0.95",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "45.12.38.139": {
+    "blocked_at": "2026-04-07T08:02:58.491175",
+    "reason": "Intrusion detected with confidence 0.90",
+    "prediction": "Intrusion",
+    "status": "blocked"
   }
 }
