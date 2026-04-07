@@ -370,5 +370,29 @@
     "reason": "Intrusion detected with confidence 0.90",
     "prediction": "Intrusion",
     "status": "blocked"
+  },
+  "45.2.18.249": {
+    "blocked_at": "2026-04-07T09:05:04.933836",
+    "reason": "Intrusion detected with confidence 0.80",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "45.70.253.219": {
+    "blocked_at": "2026-04-07T09:05:04.983837",
+    "reason": "Intrusion detected with confidence 0.80",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "209.11.62.168": {
+    "blocked_at": "2026-04-07T09:05:05.040236",
+    "reason": "Intrusion detected with confidence 0.90",
+    "prediction": "Intrusion",
+    "status": "blocked"
+  },
+  "198.219.212.93": {
+    "blocked_at": "2026-04-07T09:05:05.184265",
+    "reason": "Intrusion detected with confidence 0.90",
+    "prediction": "Intrusion",
+    "status": "blocked"
   }
 }

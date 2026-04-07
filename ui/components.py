@@ -211,6 +211,8 @@ def render_attack_map(logs_df):
     fig.update_traces(marker=dict(size=10, opacity=0.85, line=dict(width=1, color='rgba(255,255,255,0.2)')))
 
     fig.update_layout(
+        height=600,
+        autosize=True,
         geo=dict(
             showland=True,
             landcolor="#2f2b4a",
@@ -234,12 +236,12 @@ def render_attack_map(logs_df):
 
     import streamlit.components.v1 as components
     
-    html_content = fig.to_html(include_plotlyjs="cdn", full_html=False, config={"displayModeBar": False, "scrollZoom": True})
+    html_content = fig.to_html(include_plotlyjs="cdn", full_html=False, div_id="global_attack_map", config={"displayModeBar": False, "scrollZoom": True})
     
     js_inject = """
     <script>
     setTimeout(function() {
-        var gd = document.querySelectorAll('.plotly-graph-div')[0];
+        var gd = document.getElementById('global_attack_map');
         if(!gd) return;
         var isInteracting = false;
         
@@ -263,12 +265,12 @@ def render_attack_map(logs_df):
     }, 500);
     </script>
     <style>
-        body { margin: 0; padding: 0; background: transparent; }
-        .plotly-graph-div { width: 100vw; height: 100vh; }
+        body { margin: 0; padding: 0; background: #f8f9fd !important; overflow: hidden; display: flex; align-items: center; justify-content: center; width: 100vw; height: 100vh; }
+        #global_attack_map { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
     </style>
     """
     
-    components.html(html_content + js_inject, height=480)
+    components.html(html_content + js_inject, height=600)
 
 # ── Helper: section header ──
 def section_header(title, icon=""):
