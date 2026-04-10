@@ -43,12 +43,14 @@ except Exception:
 def styled_chart_layout(fig, height=340):
     fig.update_layout(
         paper_bgcolor="rgba(0,0,0,0)",
-        plot_bgcolor="rgba(248,249,253,1)",
-        font=dict(family="Inter, sans-serif", color="#5a6074", size=11),
-        title_font=dict(family="Inter, sans-serif", color="#1a1d2e", size=13),
-        margin=dict(l=16, r=16, t=36, b=16),
+        plot_bgcolor="rgba(0,0,0,0)", # Transparent to inherit from card background
+        font=dict(family="Inter, sans-serif", color="#1a1d2e", size=12),
+        margin=dict(l=16, r=16, t=40, b=16),
+        title_text="",
         legend=dict(bgcolor="rgba(255,255,255,0.9)", bordercolor="rgba(0,0,0,0.08)", borderwidth=1),
         height=height,
+        hoverlabel=dict(bgcolor="white", font_size=12, font_family="Inter"),
+        modebar=dict(bgcolor="rgba(255,255,255,0.7)", color="#4361ee", activecolor="#1a1d2e")
     )
     fig.update_xaxes(gridcolor="rgba(0,0,0,0.05)", linecolor="rgba(0,0,0,0.08)", tickcolor="rgba(0,0,0,0.08)")
     fig.update_yaxes(gridcolor="rgba(0,0,0,0.05)", linecolor="rgba(0,0,0,0.08)", tickcolor="rgba(0,0,0,0.08)")
@@ -398,10 +400,19 @@ if page == "Dashboard Overview":
         figc = px.imshow(z, text_auto=".0f", 
                          labels=dict(x="AI Prediction", y="Actual Label", color="Count"),
                          x=["Safe", "Threat"], y=["Safe", "Threat"],
-                         color_continuous_scale=[[0,"rgba(67,97,238,0.1)"], [1,"rgba(67,97,238,0.95)"]])
+                         color_continuous_scale=[[0,"rgba(67,97,238,0.2)"], [1,"rgba(67,97,238,1)"]])
         figc.update_traces(textfont=dict(color="#ffffff", size=18, family="Inter"))
         figc = styled_chart_layout(figc, 260)
-        figc.update_layout(margin=dict(l=60, r=20, t=30, b=50))
+        figc.update_layout(
+            margin=dict(l=60, r=20, t=30, b=50),
+            coloraxis_colorbar=dict(
+                title=dict(font=dict(color="#1a1d2e", size=12)),
+                tickfont=dict(color="#1a1d2e", size=11),
+                thickness=18,
+                outlinecolor="rgba(67,97,238,0.2)",
+                outlinewidth=1
+            )
+        )
         st.plotly_chart(figc, use_container_width=True)
 
 # ═══════════════════════════════════════════════════════════════
