@@ -2,10 +2,33 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import os
+import sys
+import socket
+import subprocess
+import time
 import requests
 from datetime import datetime, timedelta
 import plotly.express as px
 import plotly.graph_objects as go
+
+# ── Start Backend if not running (for Streamlit Cloud) ──
+def start_backend():
+    def is_port_in_use(port):
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            return s.connect_ex(('127.0.0.1', port)) == 0
+
+    if not is_port_in_use(8000):
+        try:
+            subprocess.Popen(
+                [sys.executable, "-m", "uvicorn", "backend.main:app", "--host", "127.0.0.1", "--port", "8000"],
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL
+            )
+            time.sleep(1) # Give it a second to start up
+        except Exception:
+            pass
+
+start_backend()
 
 # ── Imports ──
 from config.settings import BACKEND_URL_DEFAULT
