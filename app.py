@@ -19,12 +19,15 @@ def start_backend():
 
     if not is_port_in_use(8000):
         try:
-            subprocess.Popen(
-                [sys.executable, "-m", "uvicorn", "backend.main:app", "--host", "127.0.0.1", "--port", "8000"],
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL
-            )
-            time.sleep(1) # Give it a second to start up
+            backend_dir = os.path.join(os.getcwd(), "backend")
+            if os.path.exists(backend_dir):
+                subprocess.Popen(
+                    [sys.executable, "-m", "uvicorn", "main:app", "--host", "127.0.0.1", "--port", "8000"],
+                    cwd=backend_dir,
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL
+                )
+                time.sleep(1) # Give it a second to start up
         except Exception:
             pass
 
