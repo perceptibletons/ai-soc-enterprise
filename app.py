@@ -348,7 +348,7 @@ if page == "Dashboard Overview":
 
     with b:
         section_header("Attack Trend (24h)", "📈")
-        trend_df = daily_attack_trend(logs_df_full, period='H')
+        trend_df = daily_attack_trend(logs_df_full, period='h')
         if trend_df.empty:
             hours = [datetime.utcnow() - timedelta(hours=i) for i in range(23, -1, -1)]
             trend_df = pd.DataFrame({"time_bucket": hours, "count": [0]*24})

@@ -53,10 +53,10 @@ def compute_threat_score(df):
     score = float(np.clip(raw / 3 * 100, 0, 100))
     return int(score)
 
-def daily_attack_trend(df, period='H'):
+def daily_attack_trend(df, period='h'):
     """
     Return aggregated counts by time bucket.
-    period: pandas offset alias, e.g., 'H' for hourly, 'D' for daily
+    period: pandas offset alias, e.g., 'h' for hourly, 'd' for daily
     """
     if df is None or df.empty:
         return pd.DataFrame({"time_bucket": [], "count": []})
