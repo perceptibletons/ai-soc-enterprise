@@ -243,13 +243,22 @@ def render_attack_map(logs_df):
     setTimeout(function() {
         var gd = document.getElementById('global_attack_map');
         if(!gd) return;
-        var isInteracting = false;
         
-        gd.addEventListener('mousedown', function() { isInteracting = true; });
-        gd.addEventListener('mouseup', function() { isInteracting = false; });
-        gd.addEventListener('mouseleave', function() { isInteracting = false; });
-        gd.addEventListener('touchstart', function() { isInteracting = true; });
-        gd.addEventListener('touchend', function() { isInteracting = false; });
+        var isInteracting = false;
+        var interactionTimer = null;
+        
+        function pauseRotation() {
+            isInteracting = true;
+            if (interactionTimer) clearTimeout(interactionTimer);
+            interactionTimer = setTimeout(function() { 
+                isInteracting = false; 
+            }, 1500); // Wait 1.5s after last interaction to resume spinning
+        }
+        
+        gd.addEventListener('mousedown', pauseRotation);
+        gd.addEventListener('wheel', pauseRotation);
+        gd.addEventListener('touchstart', pauseRotation);
+        gd.addEventListener('touchmove', pauseRotation);
 
         function rotateMap() {
             if (!isInteracting && gd.layout && gd.layout.geo) {
@@ -257,11 +266,12 @@ def render_attack_map(logs_df):
                 if (gd.layout.geo.projection && gd.layout.geo.projection.rotation) {
                     currentLon = gd.layout.geo.projection.rotation.lon || 0;
                 }
-                var lon = (currentLon + 0.3) % 360;
+                var lon = (currentLon + 0.4) % 360;
                 Plotly.relayout(gd, {'geo.projection.rotation.lon': lon});
             }
         }
-        setInterval(rotateMap, 60);
+        // Increased interval from 60 to 100ms to reduce lagging/CPU usage
+        setInterval(rotateMap, 100);
     }, 500);
     </script>
     <style>
