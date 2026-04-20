@@ -236,7 +236,7 @@ def render_attack_map(logs_df):
 
     import streamlit.components.v1 as components
     
-    html_content = fig.to_html(include_plotlyjs="cdn", full_html=False, div_id="global_attack_map", config={"displayModeBar": False, "scrollZoom": True})
+    html_content = fig.to_html(include_plotlyjs="cdn", full_html=True, div_id="global_attack_map", config={"displayModeBar": False, "scrollZoom": True})
     
     js_inject = """
     <script>
@@ -265,12 +265,13 @@ def render_attack_map(logs_df):
     }, 500);
     </script>
     <style>
-        body { margin: 0; padding: 0; background: #f8f9fd !important; overflow: hidden; display: flex; align-items: center; justify-content: center; width: 100vw; height: 100vh; }
+        body { margin: 0; padding: 0; background-color: transparent !important; overflow: hidden; display: flex; align-items: center; justify-content: center; width: 100vw; height: 100vh; }
         #global_attack_map { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
     </style>
     """
     
-    components.html(html_content + js_inject, height=600)
+    html_content = html_content.replace("</body>", f"{js_inject}</body>")
+    components.html(html_content, height=600)
 
 # ── Helper: section header ──
 def section_header(title, icon=""):
