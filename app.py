@@ -166,6 +166,7 @@ with st.sidebar:
           <div class="logo-core"></div>
         </div>
         <div>
+          <div style="font-size:0.6rem;font-weight:700;color:#858ca1;margin-bottom:2px;text-transform:uppercase;">Developed by OCPL</div>
           <div style="font-size:1.55rem;font-weight:900;color:#1a1d2e;letter-spacing:-0.03em;line-height:1.1;">AI-SOC</div>
           <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#858ca1;margin-top:2px;">Enterprise Platform</div>
         </div>
